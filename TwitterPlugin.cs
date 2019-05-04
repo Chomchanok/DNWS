@@ -365,7 +365,7 @@ namespace DNWS
                     }
                 }
             }
-            response.body = Encoding.UTF8.GetBytes(sb.ToString());
+            response.body = Encoding.UTF8.GetBytes(sb.ToString()); 
             return response;
         }
     }
