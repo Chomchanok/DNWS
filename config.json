@@ -1,34 +1,52 @@
 ﻿{
-    "DocumentRoot": ".",
-    "Port": "8080",
-    "ThreadPoolSize" : "10",
-    "AllowThreadModel" : "Pool|Multi|Single",
-    "ThreadModel" : "Single", 
-    "Plugins" : [
-        {
-            "Path" : "stat",
-            "Class" : "DNWS.StatPlugin",
-            "Preprocessing" : "true",
-            "Postprocessing" : "false" ,
-            "Singleton" : "false"
-        },
-        {
-            "Path" : "ox",
-            "Class" : "DNWS.OXPlugin",
-            "Preprocessing" : "false",
-            "Postprocessing" :"false" 
-        },
-        {
-            "Path" : "delay",
-            "Class" : "DNWS.DelayPlugin",
-            "Preprocessing" : "false",
-            "Postprocessing" :"false" 
-        },
-        {
-            "Path" : "twitter",
-            "Class" : "DNWS.TwitterPlugin",
-            "Preprocessing" : "false",
-            "Postprocessing" :"false" 
-        }
-    ]
+  "DocumentRoot": ".",
+  "Port": "8080",
+  "ThreadPoolSize": "10",
+  "AllowThreadModel": "Pool|Multi|Single",
+  "ThreadModel": "Multi",
+  "Plugins": [
+    {
+      "Path": "stat",
+      "Class": "DNWS.StatPlugin",
+      "Preprocessing": "true",
+      "Postprocessing": "false",
+      "Singleton": "false"
+    },
+    {
+      "Path": "ox",
+      "Class": "DNWS.OXPlugin",
+      "Preprocessing": "false",
+      "Postprocessing": "false"
+    },
+    {
+      "Path": "delay",
+      "Class": "DNWS.DelayPlugin",
+      "Preprocessing": "false",
+      "Postprocessing": "false"
+    },
+    {
+      "Path": "twitter",
+      "Class": "DNWS.TwitterPlugin",
+      "Preprocessing": "false",
+      "Postprocessing": "false"
+    },
+    {
+      "Path": "users",
+      "Class": "DNWS.TwitterApiPlugin",
+      "Preprocessing": "false",
+      "Postprocessing": "false"
+    },
+    {
+      "Path": "follow",
+      "Class": "DNWS.TwitterApiPlugin",
+      "Preprocessing": "false",
+      "Postprocessing": "false"
+    },
+    {
+      "Path": "tweets",
+      "Class": "DNWS.TwitterApiPlugin",
+      "Preprocessing": "false",
+      "Postprocessing": "false"
+    }
+  ]
 }

@@ -176,7 +176,37 @@ namespace DNWS
                 context.SaveChanges();
             }
         }
-
+        public void Delete_User(string name)
+        {
+            using (var context = new TweetContext())
+            {
+                List<User> userlist = context.Users.Where(b => b.Name.Equals(name)).ToList();
+                if (userlist.Count <= 0)
+                {
+                    throw new Exception("User not exists");
+                }
+                List<User> followlist = context.Users.Where(b => true).Include(b => b.Following).ToList();
+                foreach (User temp in followlist)
+                {
+                    Twitter ntwitter = new Twitter(temp.Name);
+                    ntwitter.RemoveFollowing(userlist[0].Name);
+                }
+                context.Users.Remove(userlist[0]);
+                context.SaveChanges();
+            }
+        }
+        public static bool Check(string name)
+        {
+            using (var context = new TweetContext())
+            {
+                List<User> userlist = context.Users.Where(b => b.Name.Equals(name)).ToList();
+                if (userlist.Count == 1)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public static bool IsValidUser(string name, string password)
         {
             using (var context = new TweetContext())
@@ -189,7 +219,7 @@ namespace DNWS
             }
             return false;
         }
-
+      
         private User GetUser(string name)
         {
             using (var context = new TweetContext())
@@ -273,7 +303,7 @@ namespace DNWS
         }
 
 
-        public HTTPResponse GetResponse(HTTPRequest request)
+        public virtual HTTPResponse GetResponse(HTTPRequest request)
         {
             HTTPResponse response = new HTTPResponse(200);
             StringBuilder sb = new StringBuilder();
