@@ -8,3 +8,4 @@ Migrations/
 *.db
 client/node_modules/
 client/app/bower_components/
+*.lock

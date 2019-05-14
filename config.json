@@ -3,7 +3,7 @@
     "Port": "8080",
     "ThreadPoolSize" : "10",
     "AllowThreadModel" : "Pool|Multi|Single",
-    "ThreadModel" : "Single", 
+    "ThreadModel" : "Multi", 
     "Plugins" : [
         {
             "Path" : "stat",
